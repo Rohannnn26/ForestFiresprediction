@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Custom CSS for animations -->
+    <style>
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .pop-in {
+            animation: popIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-blue-50 to-purple-50">
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="bg-white p-8 rounded-lg shadow-2xl text-center pop-in">
+            <h2 class="text-3xl font-bold text-blue-900 mb-6">Prediction Result</h2>
+            <p class="text-xl text-gray-700 mb-8">The predicted Fire Weather Index is:</p>
+            <div class="text-5xl font-bold text-blue-600 mb-8">{{ result }}</div>
+            <a href="{{ url_for('index') }}" class="bg-blue-600 text-white px-8 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                Back to Home
+            </a>
+        </div>
+    </div>
+</body>
+</html>
