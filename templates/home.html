@@ -6,68 +6,64 @@
     <title>Predict FWI</title>
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Custom CSS for animations -->
-    <style>
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        .slide-in {
-            animation: slideIn 0.8s ease-out;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+    <!-- Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js"></script>
 </head>
-<body class="bg-gradient-to-r from-blue-50 to-purple-50">
+<body class="bg-gray-900 text-white">
+    <!-- Confetti Canvas -->
+    <canvas id="confetti" class="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></canvas>
     <div class="min-h-screen flex items-center justify-center p-4">
-        <div class="bg-white p-8 rounded-lg shadow-2xl w-full max-w-2xl slide-in">
-            <h2 class="text-3xl font-bold text-blue-900 mb-6 text-center">FWI Prediction Form</h2>
+        <div class="bg-gray-800 p-8 rounded-lg shadow-2xl w-full max-w-2xl slide-in">
+            <h2 class="text-3xl font-bold text-blue-400 mb-6 text-center">FWI Prediction Form</h2>
             <form action="{{ url_for('predict') }}" method="post" class="space-y-6">
                 <!-- Input Fields -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Temperature</label>
+                        <label class="block text-gray-300 font-medium mb-2">Temperature</label>
                         <input type="text" name="Temperature" placeholder="Enter Temperature" required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">RH</label>
+                        <label class="block text-gray-300 font-medium mb-2">RH</label>
                         <input type="text" name="RH" placeholder="Enter RH" required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Wind Speed</label>
+                        <label class="block text-gray-300 font-medium mb-2">Wind Speed</label>
                         <input type="text" name="Ws" placeholder="Enter Wind Speed" required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Rain</label>
+                        <label class="block text-gray-300 font-medium mb-2">Rain</label>
                         <input type="text" name="Rain" placeholder="Enter Rain" required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">FFMC</label>
+                        <label class="block text-gray-300 font-medium mb-2">FFMC</label>
                         <input type="text" name="FFMC" placeholder="Enter FFMC" required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">DMC</label>
+                        <label class="block text-gray-300 font-medium mb-2">DMC</label>
                         <input type="text" name="DMC" placeholder="Enter DMC" required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">ISI</label>
+                        <label class="block text-gray-300 font-medium mb-2">ISI</label>
                         <input type="text" name="ISI" placeholder="Enter ISI" required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Classes</label>
+                        <label class="block text-gray-300 font-medium mb-2">Classes</label>
                         <input type="text" name="Classes" placeholder="Enter Classes" required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Region</label>
+                        <label class="block text-gray-300 font-medium mb-2">Region</label>
                         <input type="text" name="Region" placeholder="Enter Region" required
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                               class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-white">
                     </div>
                 </div>
                 <!-- Submit Button -->
@@ -79,5 +75,7 @@
             </form>
         </div>
     </div>
+    <!-- Custom JS -->
+    <script src="scripts.js"></script>
 </body>
 </html>

@@ -6,27 +6,25 @@
     <title>Home | FWI Prediction</title>
     <!-- Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <!-- Custom CSS for animations -->
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in {
-            animation: fadeIn 1s ease-out;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+    <!-- Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js"></script>
 </head>
-<body class="bg-gradient-to-r from-blue-50 to-purple-50">
+<body class="bg-gray-900 text-white">
+    <!-- Confetti Canvas -->
+    <canvas id="confetti" class="fixed top-0 left-0 w-full h-full pointer-events-none z-50"></canvas>
     <!-- Hero Section -->
     <div class="min-h-screen flex items-center justify-center fade-in">
         <div class="text-center">
-            <h1 class="text-6xl font-bold text-blue-900 mb-4">Welcome to FWI Prediction</h1>
-            <p class="text-xl text-gray-700 mb-8">Predict the Fire Weather Index with precision using advanced machine learning models.</p>
+            <h1 class="text-6xl font-bold text-blue-400 mb-4">Welcome to FWI Prediction</h1>
+            <p class="text-xl text-gray-300 mb-8">Predict the Fire Weather Index with precision using advanced machine learning models.</p>
             <a href="{{ url_for('predict') }}" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105">
                 Get Started
             </a>
         </div>
     </div>
+    <!-- Custom JS -->
+    <script src="scripts.js"></script>
 </body>
 </html>
